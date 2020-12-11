@@ -2,6 +2,19 @@ version: '3'
 
 services:
 
+  database:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=root
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ".docker/data:/var/lib/mysql"
+    networks:
+      - default_network
+  
+  
   app:
     build: .
     entrypoint: ./.docker/entrypoint.sh
@@ -12,6 +25,15 @@ services:
       - 3000:3000
     volumes:
       - .:/home/node/app
-    
-
+    depends_on:
+      - "database"
+    networks:
+      - default_network
   
+    
+networks:
+  default_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.90.239.0/24  

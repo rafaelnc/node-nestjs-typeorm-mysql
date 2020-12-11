@@ -1,12 +1,12 @@
 {
   "type": "mysql",
-  "host": "127.0.0.1",
+  "host": "database",
   "port": 3306,
   "username": "root",
   "password": "root",
   "database": "db",
   "entities": [
-    "/home/rafael/Documentos/Avanz/Projeto_Node/nest-app/src/**/*.entity.{ts,js}"
+    "/home/node/app/src/**/*.entity.{ts,js}"
   ],
   "migrationsTableName": "migrations",
   "migrations": [

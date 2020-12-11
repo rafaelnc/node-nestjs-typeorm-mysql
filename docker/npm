@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Executa utilitário npm dentro do container 
+
+docker-compose exec app npm $@
