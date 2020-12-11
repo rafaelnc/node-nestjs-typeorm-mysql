@@ -1,0 +1,19 @@
+{
+  "type": "mysql",
+  "host": "127.0.0.1",
+  "port": 3306,
+  "username": "root",
+  "password": "root",
+  "database": "db",
+  "entities": [
+    "/home/rafael/Documentos/Avanz/Projeto_Node/nest-app/src/**/*.entity.{ts,js}"
+  ],
+  "migrationsTableName": "migrations",
+  "migrations": [
+    "src/db/migrations/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "src/db/migrations/"
+  },
+  "ssl": false
+}
