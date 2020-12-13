@@ -4,4 +4,4 @@ if [ ! -f ".env" ]; then
 fi
 
 npm install
-npm run start:prod
+npm run start:dev

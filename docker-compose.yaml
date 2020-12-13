@@ -17,12 +17,12 @@ services:
   
   app:
     build: .
-    entrypoint: ./.docker/entrypoint.sh
+    entrypoint: ./.docker/entrypoint.dev.sh
     container_name: nest-app
     environment:
       - CHOKIDAR_USEPOLLING=true
     ports:
-      - 3000:3000
+      - ${PORT}:${PORT}
     volumes:
       - .:/home/node/app
     depends_on:
