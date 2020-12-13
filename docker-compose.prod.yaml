@@ -3,7 +3,7 @@ version: '3'
 services:
 
   app:
-    image: "12.18.3"
+    image: "14.15.1"
     container_name: nest-app
     build: 
       context: .
@@ -12,7 +12,7 @@ services:
     
     
     ports:
-      - 3000:3000
+      - 3333:3333
     
      
     
