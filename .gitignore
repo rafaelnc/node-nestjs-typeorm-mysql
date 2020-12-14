@@ -2,6 +2,7 @@
 /dist
 /node_modules
 .docker/dbdata/
+.docker/data/
 ./ormconfig.json
 .env
 
