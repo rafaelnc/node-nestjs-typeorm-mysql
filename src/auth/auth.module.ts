@@ -21,6 +21,7 @@ import { JwtStrategy } from './jwt.strategy';
         expiresIn: process.env.EXPIRESIN,
       },
     }),
+    PassportModule
   ],
   controllers: [AuthController],
   providers: [UserService, AuthService,JwtStrategy],
