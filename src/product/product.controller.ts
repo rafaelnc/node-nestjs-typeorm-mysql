@@ -6,11 +6,14 @@ import {
     Patch,
     Param,
     Delete,
+    UseGuards
   } from '@nestjs/common';
   import { ProductService } from './product.service';
   import { CreateProductDTO } from './dto/create-product.dto';
   import { Product } from './product.entity';
-  
+  import { AuthGuard } from '@nestjs/passport';
+  import { JwtStrategy } from '../auth/jwt.strategy'
+
   @Controller('product')
   export class ProductController {
     constructor(private productService: ProductService) {}
@@ -23,7 +26,9 @@ import {
       return product;
     }
   
+  
     @Get('all')
+    @UseGuards(AuthGuard('jwt'))
     public async getProducts(): Promise<Product[]> {
       const products = await this.productService.getProducts();
       return products;

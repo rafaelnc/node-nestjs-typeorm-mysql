@@ -11,17 +11,22 @@ import {
   import { UserDTO } from './dto/user.dto';
   import { User } from './user.entity';
   
-@Controller('user')
+@Controller('users')
 export class UserController {  constructor(private userService: UserService) {}
   
 @Post('create')
 public async createUser(
   @Body() userDto: UserDTO,
-): Promise<User> {
+){
   const user = await this.userService.createUser(userDto);
   return user;
 }
 
+@Get()
+public async getUsers(): Promise<User[]> {
+  const users = await this.userService.getUsers();
+  return users;
+}
 
 
 @Patch('/edit/:userId')

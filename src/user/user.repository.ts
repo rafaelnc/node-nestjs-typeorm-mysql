@@ -9,7 +9,7 @@ export class UserRepository extends Repository<User> {
  
   public async createUser(
     userDto: UserDTO,
-  ): Promise<User> {
+  ){
     const { name, email, password } = userDto;
 
     const user = new User();
@@ -18,9 +18,9 @@ export class UserRepository extends Repository<User> {
    
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
-console.log(  user.password)
+
     await user.save();
-    return user;
+    return "sucess";
   }
 
   public async editUser(

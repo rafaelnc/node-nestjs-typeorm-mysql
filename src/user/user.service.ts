@@ -4,7 +4,6 @@ import { User } from './user.entity';
 import { LoginDTO } from './dto/login.dto';
 import { UserDTO } from './dto/user.dto';
 import { UserRepository } from './user.repository';
-import * as bcrypt from 'bcrypt';
 
 
 @Injectable()
@@ -16,7 +15,7 @@ export class UserService {
 
   public async createUser(
     userDto: UserDTO,
-  ): Promise<User> {
+  ) {
     return await this.userRepository.createUser(userDto);
   }
 
@@ -40,9 +39,9 @@ export class UserService {
     .createQueryBuilder("user")
     .where("user.email = :email", { email: email })
     .getOne();
-
-   const login = await bcrypt.compare(password,  user.password);
-  
+    
+   const login = user.validatePassword(password);
+   
    return login ? {id: user.id, name : user.name}: null;
   }
 
