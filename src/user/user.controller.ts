@@ -6,6 +6,8 @@ import {
     Patch,
     Param,
     Delete,
+    UseInterceptors,
+    ClassSerializerInterceptor,
   } from '@nestjs/common';
   import { UserService } from './user.service';
   import { UserDTO } from './dto/user.dto';
@@ -22,6 +24,7 @@ public async createUser(
   return user;
 }
 
+@UseInterceptors(ClassSerializerInterceptor)
 @Get()
 public async getUsers(): Promise<User[]> {
   const users = await this.userService.getUsers();

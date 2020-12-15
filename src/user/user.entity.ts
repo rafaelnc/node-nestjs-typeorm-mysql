@@ -1,6 +1,8 @@
 
-import { PrimaryGeneratedColumn, BaseEntity, Column, Entity } from 'typeorm';
+import { PrimaryGeneratedColumn, BaseEntity, Column, Entity} from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { Exclude } from 'class-transformer';
+
 
 @Entity()
 export class User extends BaseEntity {
@@ -14,11 +16,13 @@ export class User extends BaseEntity {
   email: string;
 
   @Column()
-  @Column({ select: false })
+  @Exclude({ toPlainOnly: true })
   password: string;
 
-
-  async validatePassword(password: string) {
-    return await bcrypt.compare(password,  this.password);
+  
+  async validatePassword(password: string, user) {
+    return await bcrypt.compare(password,  user.password);
   }
+
+ 
 }

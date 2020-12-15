@@ -40,8 +40,8 @@ export class UserService {
     .where("user.email = :email", { email: email })
     .getOne();
     
-   const login = user.validatePassword(password);
-   
+   const login = await user.validatePassword(password,user);
+
    return login ? {id: user.id, name : user.name}: null;
   }
 
